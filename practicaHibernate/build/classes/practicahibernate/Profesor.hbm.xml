@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 02-feb-2021 10:12:55 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="practicahibernate.Profesor" table="profesor" optimistic-lock="version">
+        <id name="idProfesor" type="int">
+            <column name="id_profesor" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="departamento" class="practicahibernate.Departamento" fetch="select">
+            <column name="id_departamento" not-null="true" />
+        </many-to-one>
+        <property name="dni" type="string">
+            <column name="DNI" length="2000000000" not-null="true" />
+        </property>
+        <property name="nombre" type="string">
+            <column name="nombre" length="2000000000" />
+        </property>
+        <property name="apellido" type="string">
+            <column name="apellido" length="2000000000" />
+        </property>
+        <property name="fechaNacimiento" type="string">
+            <column name="fechaNacimiento" length="2000000000" />
+        </property>
+        <property name="sexo" type="string">
+            <column name="sexo" length="2000000000" />
+        </property>
+    </class>
+</hibernate-mapping>

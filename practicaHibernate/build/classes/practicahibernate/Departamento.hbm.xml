@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 02-feb-2021 10:12:55 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="practicahibernate.Departamento" table="departamento" optimistic-lock="version">
+        <id name="idDepartamento" type="int">
+            <column name="id_departamento" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="colegio" class="practicahibernate.Colegio" fetch="select">
+            <column name="id_colegio" not-null="true" />
+        </many-to-one>
+        <property name="codDep" type="string">
+            <column name="codDep" length="2000000000" not-null="true" />
+        </property>
+        <property name="nombre" type="string">
+            <column name="nombre" length="2000000000" />
+        </property>
+        <property name="tipo" type="string">
+            <column name="tipo" length="2000000000" />
+        </property>
+        <property name="numeroIntegrantes" type="string">
+            <column name="numeroIntegrantes" length="2000000000" />
+        </property>
+        <property name="plantaLocalizacion" type="string">
+            <column name="plantaLocalizacion" length="2000000000" />
+        </property>
+        <set name="profesors" table="profesor" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_departamento" not-null="true" />
+            </key>
+            <one-to-many class="practicahibernate.Profesor" />
+        </set>
+    </class>
+</hibernate-mapping>
